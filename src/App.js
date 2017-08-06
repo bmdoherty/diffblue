@@ -45,13 +45,12 @@ class App extends Component {
     return (
       <div className="App">
         <div className="leftPanel">
-          {/* <DirectorySummary data={this.directories(this.state.data)} action={this.changeDirectory} /> */}
-          <DirectoryListing data={directories(data)} action={this.changeDirectory} directory={directory}/>
+           <DirectoryListing data={directories(data)} action={this.changeDirectory} directory={directory}/> 
         </div>
 
         <div className="rightPanel">      
           <div className="detail">
-            <DirectoryDetail files={directoryFiles(data, directory)} directory={directory} />
+             <DirectoryDetail files={directoryFiles(data, directory)} directory={directory} /> 
           </div>        
         </div>      
       </div> 

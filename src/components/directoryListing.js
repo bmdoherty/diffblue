@@ -16,14 +16,11 @@ export default class DirectoryListing extends Component {
       directory: ''
     }    
   }
-
-  handleSort = clickedColumn => () => {
+  
+  handleSort = (clickedColumn)  => {
     const { column, data, direction } = this.state
     
-    console.log(this.state)
-
     if (column !== clickedColumn) {
-      console.log(clickedColumn);
       this.setState({
         column: clickedColumn,
         data: _.sortBy(data, [clickedColumn]),
@@ -63,20 +60,20 @@ export default class DirectoryListing extends Component {
     
     return (
       <Table sortable celled collapsing>
-        <Table.Header>
+         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell sorted={column === 'files' ? direction : null} onClick={this.handleSort('files')}>
+             <Table.HeaderCell sorted={column === 'files' ? direction : null} onClick={()=>this.handleSort('files')}>
               Files
             </Table.HeaderCell>
-            <Table.HeaderCell sorted={column === 'directory' ? direction : null} onClick={this.handleSort('directory')}>
+            <Table.HeaderCell sorted={column === 'directory' ? direction : null} onClick={()=>this.handleSort('directory')}>
               Directory
             </Table.HeaderCell>
-            <Table.HeaderCell sorted={column === 'percent' ? direction : null} onClick={this.handleSort('percent')}>
+            <Table.HeaderCell sorted={column === 'percent' ? direction : null} onClick={()=>this.handleSort('percent')}>
               Percent
-            </Table.HeaderCell>
+            </Table.HeaderCell> 
           </Table.Row>
         </Table.Header>
-        <Table.Body>
+           <Table.Body>
           {_.map(data, ({ directory, files, linesCovered, linesTotal, percent }) => (
             <Table.Row key={directory}>
               <Table.Cell>{files}</Table.Cell>
@@ -88,8 +85,9 @@ export default class DirectoryListing extends Component {
               <Table.Cell>{percent}</Table.Cell>
             </Table.Row>
           ))}
-        </Table.Body>
+        </Table.Body>    
       </Table>
+
     )
   }
 }
