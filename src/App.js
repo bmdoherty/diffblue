@@ -1,105 +1,61 @@
 import React, { Component } from 'react';
-import processData from './processData';
-//import logo from './logo.svg';
-import './App.css';
+import './css/App.css';
+
+import {processData, directories, directoryFiles} from './utils';
+import DirectoryListing from './components/directoryListing';
+import DirectoryDetail from './components/directoryDetail';
 
 class App extends Component {
 
   constructor (props) {
     super(props)
-    this.state = { data: [] }
-  }
 
-  loadCoverageData () {
-    fetch('https://gist.githubusercontent.com/royletron/f535f03830c92cf840665831e8d3d528/raw/fa5a266b9039843a92a13161bb92a7affb1f3dfc/java.json')
-      .then(response => response.json())
-      .then(data => { 
-        data  = processData(data);
-        this.setState({ data: data }); 
-      })      
-      .catch(err => console.error(this.props.url, err.toString()))
+    this.state = { 
+      data: [],
+      url: 'https://gist.githubusercontent.com/royletron/f535f03830c92cf840665831e8d3d528/raw/fa5a266b9039843a92a13161bb92a7affb1f3dfc/java.json',
+      directory: ''
+    }  
+
+    this.changeDirectory = this.changeDirectory.bind(this);    
   }
 
   componentDidMount() {
     this.loadCoverageData();
   }
 
-  render() {
-    return (
-      <FilterableCoverageTable coverage={this.state.data} />
-    );
+  changeDirectory(directory) {
+    this.setState({ directory: directory }); 
   }
-}
 
-class CoverageCategoryRow extends Component {
-  render() {
-    return <tr><th colSpan="2" style={{textAlign:"left"}}>{this.props.directory} {this.props.directorylLinesCovered} / {this.props.directorylLinesTotal} {(this.props.directorylLinesCovered / this.props.directorylLinesTotal) * 100}%</th></tr> ;
+  loadCoverageData () {
+    fetch(this.state.url)
+      .then(response => response.json())
+      .then(data => { 
+        data  = processData(data);
+        this.setState({ data: data }); 
+        this.setState({ directory: data[0].directory }); 
+
+      })      
+      .catch(err => console.error('Error:', err.toString() ))
   }
-}
 
-class CoverageRow extends Component {
   render() {
+    const { data, directory } = this.state
+
     return (
-      <tr>
-        <td>{this.props.file}</td>
-        <td>{(this.props.linesCovered / this.props.linesTotal) * 100}%</td>
-      </tr>
-    );
-  }
-}
+      <div className="App">
+        <div className="leftPanel">
+          {/* <DirectorySummary data={this.directories(this.state.data)} action={this.changeDirectory} /> */}
+          <DirectoryListing data={directories(data)} action={this.changeDirectory} directory={directory}/>
+        </div>
 
-class CoverageTable extends Component {
-  render() {
-    var rows = [];
-    var lastDirectory = null;    
-    var data = this.props.coverage;
-
-    data.forEach(function(item, index) {
-      var file = data[index]
-
-      if (file.directory !== lastDirectory) {
-        let directoryFiles = data.filter(function (f) {
-          if (f.directory === file.directory ) return file;
-        });
-
-        console.log(`${file.directory} ${directoryFiles.length}`)
-        console.log(directoryFiles);
-
-        var directorylLinesCovered = directoryFiles
-            .map(function(f) { return f.linesCovered; })
-            .reduce(function(p, c) { return p + c; });
-
-        var directorylLinesTotal = directoryFiles
-            .map(function(f) { return f.linesTotal; })
-            .reduce(function(p, c) { return p + c; });            
-          
-        rows.push(<CoverageCategoryRow directory={file.directory} key={file.key + 'header'} directorylLinesCovered={directorylLinesCovered} directorylLinesTotal={directorylLinesTotal} />);
-      }
-
-      rows.push(<CoverageRow key={file.key} file={file.fileName} linesCovered={file.linesCovered} linesTotal={file.linesTotal} />);
-      lastDirectory = file.directory;
-    });
-    return (
-      <table>
-        <thead>
-          <tr>
-            <th>File</th>
-            <th>Coverage Percent</th>
-          </tr>
-        </thead>
-        <tbody>{rows}</tbody>
-      </table>
-    );
-  }
-}
-
-class FilterableCoverageTable extends Component {
-  render() {
-    return (
-      <div>
-        <CoverageTable coverage={this.props.coverage} />
-      </div>
-    );
+        <div className="rightPanel">      
+          <div className="detail">
+            <DirectoryDetail files={directoryFiles(data, directory)} directory={directory} />
+          </div>        
+        </div>      
+      </div> 
+    )
   }
 }
 

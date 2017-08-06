@@ -1,0 +1,38 @@
+.App {  
+
+}
+
+/* override  */
+.ui.progress:last-child { margin-bottom: 2px }
+
+.name { float:left }
+.ratio { float:right }
+
+.leftPanel {
+  width: 555px;
+  position: absolute;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  overflow-y: scroll;
+}
+ 
+.rightPanel { 
+  margin-left: 555px;
+  padding: 20px;        
+}
+
+.ui.green.progress .bar {
+  background-color: #aed6ae;
+}
+
+.ui.progress .bar>.progress {
+  color: #888;
+}
+
+.ui.sortable.table thead th:first-child {
+  min-width: 67px
+}
+
+.ui.sortable.table thead th:last-child {
+  min-width: 87px
+}
