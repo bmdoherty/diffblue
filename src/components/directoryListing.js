@@ -78,7 +78,7 @@ export default class DirectoryListing extends Component {
             <Table.Row key={directory}>
               <Table.Cell>{files}</Table.Cell>
               <Table.Cell>
-                <a href="#" onClick={ ()=>this.changeDirectory(directory) }>
+                <a href="#directoryDetails" onClick={ ()=>this.changeDirectory(directory) }>
                   {directory}
                 </a>  
               </Table.Cell>
