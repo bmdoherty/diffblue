@@ -1,4 +1,4 @@
-function compare(a,b) {
+export const compare = (a,b) => {
   if (a.directory < b.directory)
     return -1
   if (a.directory > b.directory)
