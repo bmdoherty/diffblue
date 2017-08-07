@@ -15,17 +15,12 @@ const a = {
 
 const b = processData(a)
 
-
 it('App renders without crashing', () => {
   shallow(<App />);
 });
 
 it('FileDetail renders without crashing', () => {
   shallow(<FileDetail key={1} percent={50} name={'filename'} linesCovered={50} linesTotal={100} />);
-});
-
-it('DirectoryListing renders without crashing', () => {
-  shallow(<DirectoryListing data={directories(b)} action={ () => {}} directory={'/a/'}/> );
 });
 
 it('DirectoryListing renders without crashing', () => {
