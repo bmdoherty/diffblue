@@ -4,7 +4,7 @@
 [![Code Climate](https://codeclimate.com/github/bmdoherty/diffblue/badges/gpa.svg)](https://codeclimate.com/github/bmdoherty/diffblue)
 [![Issue Count](https://codeclimate.com/github/bmdoherty/diffblue/badges/issue_count.svg)](https://codeclimate.com/github/bmdoherty/diffblue)
 
-#Considerations
+### Considerations
 * thought I would use react, never used react before so seemed relevant to the job and good learniing experience
 * chose react create app as it seemed easiest
 * was using Jest recently and thought I would try that as testing framework
@@ -15,13 +15,13 @@
 
 When I say learning, its for things I think are useful to overall project quality.
 
-# Run
-* npm start
+### Run
+npm start
 
-# Demo
+### Demo
 [on github pages](https://bmdoherty.github.io/diffblue/)
 
-# 4 hours work
+### 4 hours work
 The https://github.com/bmdoherty/diffblue/tree/4_hours_work
 
 This is how far I got in 4 hours, which would be the skeleton of the app.
