@@ -15,13 +15,13 @@
 
 When I say learning, its for things I think are useful to overall project quality.
 
-#Run
+# Run
 * npm start
 
-#Demo
+# Demo
 [on github pages](https://bmdoherty.github.io/diffblue/)
 
-#4 hours work
+# 4 hours work
 The https://github.com/bmdoherty/diffblue/tree/4_hours_work
 
 This is how far I got in 4 hours, which would be the skeleton of the app.
