@@ -1,16 +1,21 @@
 import React from 'react';
+import { configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import "isomorphic-fetch"
+
+configure({ adapter: new Adapter() });
 import { shallow } from 'enzyme';
 
 import App from '../src/App';
 import FileDetail from '../src/components/fileDetail';
 import DirectoryListing from '../src/components/directoryListing';
 import DirectoryDetail from '../src/components/directoryDetail';
-import {processData, filesInfo, directories, directoryFiles} from '../src/utils'
+import { processData, filesInfo, directories, directoryFiles } from '../src/utils'
 
 const a = {
-  "/c/c.java": [1,2],
-  "/b/b.java": [3,4],
-  "/a/ajava": [5,6]
+  "/c/c.java": [1, 2],
+  "/b/b.java": [3, 4],
+  "/a/ajava": [5, 6]
 }
 
 const b = processData(a)
@@ -24,10 +29,10 @@ it('FileDetail renders without crashing', () => {
 });
 
 it('DirectoryListing renders without crashing', () => {
-  shallow(<DirectoryListing data={directories(b)} action={ () => {}} directory={'/a/'}/> );
+  shallow(<DirectoryListing data={directories(b)} action={() => { }} directory={'/a/'} />);
 });
 
 it('DirectoryDetail renders without crashing', () => {
-  shallow(<DirectoryDetail files={directoryFiles(b, 'a')} directory={'a'} /> );
+  shallow(<DirectoryDetail files={directoryFiles(b, 'a')} directory={'a'} />);
 });
 
