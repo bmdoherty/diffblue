@@ -5,7 +5,7 @@
   "homepage": "https://bmdoherty.github.io/diffblue/",
   "dependencies": {
     "lodash": "^4.17.11",
-    "semantic-ui-css": "^2.4.0"
+    "semantic-ui-css": "^2.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -14,26 +14,26 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.0",
+    "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
     "babel-cli": "^6.24.1",
     "babel-jest": "^23.6.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-es2015-destructuring": "^6.23.0",
     "codeclimate": "0.0.32",
-    "enzyme": "^3.6.0",
-    "enzyme-adapter-react-16": "^1.5.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
     "es6-promise": "^4.2.5",
     "isomorphic-fetch": "^2.2.1",
     "jest": "^23.6.0",
     "jest-cli": "^23.6.0",
-    "jest-enzyme": "^6.1.2",
+    "jest-enzyme": "^7.0.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-scripts": "^1.1.5",
+    "react-scripts": "^2.0.5",
     "react-test-renderer": "^16.5.2",
     "regenerator-runtime": "^0.12.1",
-    "semantic-ui-react": "^0.82.5"
+    "semantic-ui-react": "^0.83.0"
   },
   "jest": {
     "moduleNameMapper": {
